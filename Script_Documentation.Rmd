@@ -1,0 +1,98 @@
+<!-- AI Assistance Declaration: I used ChatGPT (GPT-6; accessed November 7, 2026) for project ideation, documentation structure, Markdown/R Markdown formatting suggestions, and wording review. Prompts used are recorded in Appendix.md. I will verify the documentation by previewing it, knitting the R Markdown file, testing the R script in RStudio or Posit Cloud, and independently checking calculations. All final calculations and code validation are my responsibility. I am responsible for the accuracy and originality of this work. -->
+
+---
+title: "Retail Sales Analysis: R Script Documentation"
+author: "Student Name"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+---
+
+# Purpose
+
+The `analyze_sales.R` script imports and explores a small synthetic retail transactions
+dataset. It demonstrates a basic workflow for inspecting data and producing descriptive
+summaries in R. The dataset is fictional and intended only for this educational assignment.
+
+## Script Location
+
+```text
+scripts/analyze_sales.R
+```
+
+## Inputs
+
+The script reads `data/retail_sales.csv`, which contains:
+
+| Variable | Description |
+|---|---|
+| `Order_ID` | Synthetic order identifier |
+| `Order_Date` | Transaction date |
+| `Product` | Product category |
+| `Quantity` | Number of units |
+| `Unit_Price` | Price per unit |
+| `Region` | Fictional sales region |
+
+## Dependencies
+
+The script uses the `readr` package. Install it if necessary:
+
+```{r eval=FALSE}
+install.packages("readr")
+```
+
+## How to Run the Script
+
+Run from the repository root directory:
+
+```{r eval=FALSE}
+source("scripts/analyze_sales.R")
+```
+
+## Main Processing Steps
+
+1. Load `readr`.
+2. Import the synthetic CSV file.
+3. Display the first six records.
+4. Display dataset dimensions, column names, and structure.
+5. Check missing values.
+6. Summarize total quantity by product.
+7. Summarize total quantity by region.
+
+## Example R Code
+
+This example shows the type of descriptive summary used in the script:
+
+```{r eval=FALSE}
+quantity_by_product <- aggregate(
+  Quantity ~ Product,
+  data = retail_sales,
+  FUN = sum
+)
+print(quantity_by_product)
+```
+
+## Outputs
+
+When executed successfully, the script prints a data preview, dataset dimensions and
+structure, missing-value counts, and quantity summaries by product and region.
+
+## Validation
+
+Run the script from the project root, confirm that the CSV imports, inspect the output,
+and independently verify at least one summary using a spreadsheet. Knit this document
+in RStudio or Posit Cloud and inspect the rendered HTML.
+
+## Limitations
+
+The dataset is small and synthetic. It is useful for demonstrating documentation and
+basic descriptive analysis, but it cannot support conclusions about actual retail markets.
+
+## AI Assistance
+
+ChatGPT assisted with documentation organization and wording. See `Appendix.md` for
+prompts and the verification record. The student is responsible for testing the code
+and verifying all results.
